@@ -1,0 +1,61 @@
+<div class="container">
+  <mat-form-field>
+    <mat-label>Юридический статус:</mat-label>
+    <mat-select >
+      <mat-option  value="phys" (onSelectionChange)="status('phys')">Физическое лицо</mat-option>
+      <mat-option  value="yur" (onSelectionChange)="status('yur')">Юридическое лицо</mat-option>
+    </mat-select>
+  </mat-form-field><br>
+  <mat-form-field>
+    <mat-label>Ваш ежемесячный доход(в тенге):</mat-label>
+    <input matInput [formControl]="income" type="number" required>
+    <span matPrefix>&#8376;  </span>
+    <span matSuffix>.00</span>
+  </mat-form-field>
+  <br>
+  <mat-form-field *ngIf="userStatus!='yur'">
+    <mat-label>Ваш возраст либо сколько лет вы на рынке(в годах):</mat-label>
+    <input matInput [formControl]="age" type="number" required><br>
+  </mat-form-field>
+  <mat-form-field *ngIf="userStatus!='yur'">
+    <mat-label>Пол:</mat-label>
+    <mat-select (select)="gender($event)">
+      <mat-option value="men" (onSelectionChange)="gender('men')">Мужской</mat-option>
+      <mat-option value="women" (onSelectionChange)="gender('women')">Женский</mat-option>
+    </mat-select><br>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Введите стаж работы(в годах):</mat-label>
+    <input matInput [formControl]="workExperience" type="number" required>
+  </mat-form-field><br>
+  <div>
+    <mat-label>Есть ли у вас просроченные кредиты? Если да то сколько:</mat-label><br>
+    <button mat-raised-button (click)="overDueLoans = true" >Да есть</button><br>
+  </div>
+  <br>
+  <mat-form-field>
+    <mat-label>Как хотите получить кредит:</mat-label>
+    <mat-select>
+      <mat-option value="nal" (onSelectionChange)="creditForm('nal')">Наличными</mat-option>
+      <mat-option value="bazNal"(onSelectionChange)="creditForm('bezNal')" >На карту</mat-option>
+    </mat-select>
+  </mat-form-field><br>
+  <div>
+    <mat-label>Есть ли у вас залоговое имущество?:</mat-label><br>
+    <button mat-raised-button (click)="havePledge()">Да есть</button>
+    <br>
+    <mat-form-field *ngIf="pledge">
+      <mat-label>В каком размере ваще имущество?</mat-label>
+      <input matInput [formControl]="pledgeSum" type="number" required>
+      <span matPrefix>&#8376;  </span>
+      <span matSuffix>.00</span>
+    </mat-form-field>
+  </div><br>
+  <mat-form-field>
+    <mat-label>В каком размере хотите получить кредит:</mat-label>
+    <input matInput [formControl]="creditSum" required type="number">
+    <span matPrefix>&#8376;</span>
+    <span matSuffix>.00</span>
+  </mat-form-field><br>
+  <button (click)="check()" class="subButton" mat-raised-button color="primary">Проверить</button>
+</div>

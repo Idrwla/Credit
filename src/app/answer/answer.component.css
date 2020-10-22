@@ -1,0 +1,12 @@
+div.intro{
+  position: relative;
+  left: 30%;
+  top:30%;
+  width: 50%;
+  height: 20%;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 2px;
+  border-style: solid;
+  padding: 15px;
+}

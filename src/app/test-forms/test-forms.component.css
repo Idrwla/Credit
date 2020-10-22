@@ -1,0 +1,14 @@
+div.container{
+  width: 65%;
+  position: relative;
+  left:30%;
+  margin-top: 40px;
+}
+.mat-form-field{
+  width: 65%;
+}
+button.subButton{
+  position: relative;
+  left: 20%;
+  width: 200px;
+}
